@@ -1,5 +1,7 @@
 package com.examly.springapp.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.examly.springapp.dto.PlantData;
@@ -22,5 +24,9 @@ public class PlantServiceImpl implements PlantService {
         plant.setFertilizingFrequency(plantData.getFertilizingFrequency());
 
         return plantRepo.save(plant);
+    }
+
+    public List<Plant> getAllPlants(){
+        return plantRepo.findAll();
     }
 }

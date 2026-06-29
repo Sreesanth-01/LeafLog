@@ -16,6 +16,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Plant {
+    public Plant(String plantName, int wateringFrequency, int sunlightHours, int fertilizingFrequency) {
+        this.plantName = plantName;
+        this.wateringFrequency = wateringFrequency;
+        this.sunlightHours = sunlightHours;
+        this.fertilizingFrequency = fertilizingFrequency;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
