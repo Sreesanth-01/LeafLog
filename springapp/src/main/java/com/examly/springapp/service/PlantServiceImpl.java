@@ -2,6 +2,7 @@ package com.examly.springapp.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.examly.springapp.dto.PlantData;
@@ -32,5 +33,18 @@ public class PlantServiceImpl implements PlantService {
     @Override
     public void deletePlant(long id){
         plantRepo.deleteById(id);
+    }
+    @Override
+    public List<Plant> generateCarePlan(String method){
+        Sort sort;
+        if(method.equals("water")){
+            sort = Sort.by("wateringFrequency").ascending();
+        }
+        else{
+            sort = Sort.by("sunlightHours").descending();
+        }
+        return plantRepo.findAll(sort);
+
+
     }
 }

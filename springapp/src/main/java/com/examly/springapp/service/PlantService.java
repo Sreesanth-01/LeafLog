@@ -9,4 +9,5 @@ public interface PlantService {
     public Plant addPlant(PlantData plantData);
     public List<Plant> getAllPlants();
     public void deletePlant(long id);
+    public List<Plant> generateCarePlan(String method);
 }

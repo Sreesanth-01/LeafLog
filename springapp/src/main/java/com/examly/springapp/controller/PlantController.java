@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.examly.springapp.dto.PlantData;
@@ -38,5 +39,10 @@ public class PlantController {
     public ResponseEntity<String> deletePlant(@PathVariable long id){
         plantService.deletePlant(id);
         return new ResponseEntity<>("Deleted",HttpStatus.OK);
+    }
+
+    @GetMapping("/plants/plan")
+    public ResponseEntity<List<Plant>> generateCarePlan(@RequestParam String method){
+        return new ResponseEntity<>(plantService.generateCarePlan(method),HttpStatus.OK);
     }
 }
