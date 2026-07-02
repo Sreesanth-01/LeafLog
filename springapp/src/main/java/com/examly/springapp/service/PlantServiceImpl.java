@@ -15,7 +15,7 @@ public class PlantServiceImpl implements PlantService {
     public PlantServiceImpl(PlantRepo plantRepo){
         this.plantRepo = plantRepo;
     }
-
+    @Override
     public Plant addPlant(PlantData plantData){
         Plant plant = new Plant();
         plant.setPlantName(plantData.getPlantName());
@@ -25,8 +25,12 @@ public class PlantServiceImpl implements PlantService {
 
         return plantRepo.save(plant);
     }
-
+    @Override
     public List<Plant> getAllPlants(){
         return plantRepo.findAll();
+    }
+    @Override
+    public void deletePlant(long id){
+        plantRepo.deleteById(id);
     }
 }

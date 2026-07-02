@@ -8,4 +8,5 @@ import com.examly.springapp.model.Plant;
 public interface PlantService {
     public Plant addPlant(PlantData plantData);
     public List<Plant> getAllPlants();
+    public void deletePlant(long id);
 }
