@@ -1,6 +1,7 @@
 package com.examly.springapp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,10 @@ public class PlantServiceImpl implements PlantService {
     @Override
     public List<Plant> getAllPlants(){
         return plantRepo.findAll();
+    }
+    @Override
+    public Optional<Plant> getPlantById(long id){
+        return plantRepo.findById(id);
     }
     @Override
     public void deletePlant(long id){

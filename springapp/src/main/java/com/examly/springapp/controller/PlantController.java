@@ -35,6 +35,11 @@ public class PlantController {
         return new ResponseEntity<>(plantService.getAllPlants(),HttpStatus.OK);
     }
 
+    @GetMapping("/plants/{id}")
+    public ResponseEntity<Plant> getPlantById(@PathVariable long id){
+        return new ResponseEntity<>(plantService.getPlantById(id).get(),HttpStatus.OK);
+    }
+
     @DeleteMapping("/plants/{id}")
     public ResponseEntity<String> deletePlant(@PathVariable long id){
         plantService.deletePlant(id);
