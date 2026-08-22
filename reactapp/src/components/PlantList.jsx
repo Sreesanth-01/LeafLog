@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { getPlants } from '../services/plantApi';
+import PlantCard from './PlantCard';
 
-const PlantList = () => {
+const PlantList = ({plants,onEdit,onDelete}) => {
 
-  const [plantList,setPlantList] = useState([]);
-  useEffect(async()=>{
-    try {
-      const res = await getPlants();
-      setPlantList(res);
-      console.log(res);
-    } catch (error) {
-      
-    }
-  },[])
   return (
     <div>
-
+      <h2>Plant List</h2>
+      <div>
+          {plants.length>0 && plants.map((plant)=>(
+            <PlantCard
+              key={plant.id}
+              plant={plant}
+              onEdit={onEdit}
+              onDelete={onDelete} 
+            />
+          ))}
+      </div>
     </div>
   )
 }

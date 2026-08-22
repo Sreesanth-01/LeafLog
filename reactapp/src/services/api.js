@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { config } from 'karma'
 
 const api = axios.create({
     baseURL:"http://8080-cdcaaaabedafdacceedbadfcfbabfcdecfafccfe.premiumproject.examly.io",
@@ -17,4 +16,10 @@ api.interceptors.request.use((config)=>{
     return config;
 })
 
-export default api
+export const addPlant=(data)=>{
+    return api.post("/api/plants",data);
+}
+
+export const getPlants=()=>{
+    return api.get("/api/plants");
+}

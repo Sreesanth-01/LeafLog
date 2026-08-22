@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
-import { addPlant } from '../services/plantApi';
+import { addPlant } from '../services/api';
 
-const PlantForm = () => {
+const PlantForm = ({onSubmit, selectedPlant}) => {
   const [formData,setFormData] = useState({
-    plantName:"",
-    wateringFrequency:0,
-    sunlightHours:0,
-    fertilizingFrequency:0
+    name:selectedPlant ? selectedPlant.name : "",
+    wateringFrequency:selectedPlant ? selectedPlant.wateringFrequency : "",
+    lastWateredDate:selectedPlant ? selectedPlant.lastWateredDate : ""
   });
 
   const handleChange = (e) =>{
-    setFormData({...form,[e.target.name]:e.target.value});
+    setFormData({...formData,[e.target.name]:e.target.value});
   }
 
   const handleSubmit = async(e) =>{
     e.preventDefault();
     try {
-      const res = await addPlant(formData);
+      await onSubmit(formData);
       console.log(res);
     } catch (error) {
       console.error(error);
@@ -24,15 +23,12 @@ const PlantForm = () => {
   }
 
   return (
-    <div>
       <form onSubmit={handleSubmit}>
-        <input type='text' name='plantName' value={formData.plantName} placeholder='Enter PlantName' ></input>
-        <input type='number' name='wateringFrequency' value={formData.wateringFrequency} placeholder='Watering Frequency' ></input>
-        <input type='number' name='sunlightFrequency' value={formData.sunlightHours} placeholder='Sunlight Frequency' ></input>
-        <input type='number' name='fertilizingFrequency' value={formData.fertilizingFrequency} placeholder='Fertilizing Frequency'></input>
-        <button type='submit'></button>
+        <input type='text' name='name' value={formData.name} placeholder='Plant Name' onChange={handleChange}></input>
+        <input type='text' name='wateringFrequency' value={formData.wateringFrequency} placeholder='Watering Frequency' onChange={handleChange}></input>
+        <input type='date' name='lastWateredDate' value={formData.lastWateredDate} onChange={handleChange}></input>
+        <button type='submit' role='button'>Add Plant</button>
       </form>
-    </div>
   )
 }
 
