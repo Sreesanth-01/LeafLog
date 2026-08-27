@@ -1,0 +1,516 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f9f6;
+  color: #26382c;
+}
+
+
+/* =========================
+   APP
+========================= */
+
+.app {
+  min-height: 100vh;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  height: 70px;
+  padding: 0 7%;
+  background: #ffffff;
+  border-bottom: 1px solid #e2ebe4;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 21px;
+  font-weight: 700;
+  color: #2f6b3d;
+}
+
+.brand-icon {
+  font-size: 25px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #536359;
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: color 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: #3f7d4a;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+  width: 86%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 45px 0 70px;
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome-section {
+  margin-bottom: 30px;
+}
+
+.welcome-label,
+.section-label {
+  margin: 0 0 8px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+
+  color: #4d8b5b;
+}
+
+.welcome-section h1 {
+  margin: 0;
+
+  font-size: 34px;
+  line-height: 1.2;
+  color: #244c2e;
+}
+
+.welcome-text {
+  margin: 10px 0 0;
+
+  font-size: 15px;
+  color: #718078;
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  padding: 22px;
+
+  background: #ffffff;
+  border: 1px solid #e0ebe2;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 18px rgba(45, 90, 55, 0.08);
+}
+
+.stat-icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  background: #edf6ef;
+
+  font-size: 22px;
+}
+
+.stat-card p {
+  margin: 0 0 5px;
+
+  font-size: 12px;
+  color: #7a887f;
+}
+
+.stat-card h2 {
+  margin: 0;
+
+  font-size: 20px;
+  color: #2f633a;
+}
+
+
+/* =========================
+CONTENT SECTIONS
+========================= */
+
+.content-section {
+margin-bottom: 40px;
+}
+
+.section-heading {
+margin-bottom: 18px;
+
+display: flex;
+align-items: flex-end;
+justify-content: space-between;
+}
+
+.section-heading h2 {
+margin: 0;
+
+font-size: 23px;
+color: #294d32;
+}
+
+.plant-count {
+padding: 7px 12px;
+
+border-radius: 20px;
+background: #edf6ef;
+
+color: #3f7d4a;
+
+font-size: 12px;
+font-weight: 600;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.content-section form {
+  width: 100%;
+  max-width: none;
+
+  margin: 0;
+  padding: 25px;
+
+  background: #ffffff;
+  border: 1px solid #e0ebe2;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(38, 83, 50, 0.05);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.content-section form input {
+  width: 100%;
+  min-width: 0;
+
+  padding: 13px 14px;
+
+  border: 1px solid #ccdacf;
+  border-radius: 7px;
+
+  font-size: 14px;
+  color: #26382c;
+
+  outline: none;
+  background: #ffffff;
+
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.content-section form input:focus {
+  border-color: #4d8b5b;
+
+  box-shadow:
+    0 0 0 3px rgba(77, 139, 91, 0.12);
+}
+
+.content-section form button {
+  padding: 13px 20px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #3f7d4a;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: background 0.2s ease;
+}
+
+.content-section form button:hover {
+  background: #32663c;
+}
+
+
+/* =========================
+   FORM RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+  .content-section form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .content-section form button {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 550px) {
+  .content-section form {
+    grid-template-columns: 1fr;
+  }
+
+  .content-section form button {
+    grid-column: auto;
+  }
+}
+
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+
+.navbar {
+padding: 0 5%;
+}
+
+.navbar-links {
+gap: 15px;
+}
+
+.stats-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+
+.main-content {
+width: 90%;
+}
+}
+
+
+@media (max-width: 550px) {
+
+.navbar {
+height: auto;
+padding: 18px 5%;
+
+flex-direction: column;
+gap: 15px;
+}
+
+.navbar-links {
+width: 100%;
+justify-content: center;
+}
+
+.welcome-section h1 {
+font-size: 28px;
+}
+
+.stats-grid {
+grid-template-columns: 1fr;
+}
+
+.section-heading {
+align-items: flex-start;
+gap: 10px;
+}
+}
+
+/* =========================
+   PLANT LIST
+========================= */
+
+.content-section > div > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+
+/* =========================
+   PLANT CARD
+========================= */
+
+.content-section > div > div > div {
+  background: #ffffff;
+  border: 1px solid #e0ebe2;
+  border-radius: 12px;
+  padding: 22px;
+
+  box-shadow: 0 3px 12px rgba(38, 83, 50, 0.05);
+
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.content-section > div > div > div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(38, 83, 50, 0.09);
+}
+
+
+/* Plant name */
+
+.content-section > div > div > div h2 {
+  margin: 0 0 18px;
+
+  font-size: 20px;
+  color: #2f633a;
+}
+
+
+/* Plant information */
+
+.content-section > div > div > div p {
+  margin: 8px 0;
+
+  font-size: 14px;
+  color: #66756c;
+}
+
+
+/* Buttons */
+
+.content-section > div > div > div button {
+  margin-top: 15px;
+  margin-right: 8px;
+
+  padding: 8px 15px;
+
+  border-radius: 6px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+
+/* Edit */
+
+.content-section > div > div > div button:first-of-type {
+  border: 1px solid #4d8b5b;
+
+  background: #ffffff;
+  color: #3f7d4a;
+}
+
+.content-section > div > div > div button:first-of-type:hover {
+  background: #3f7d4a;
+  color: #ffffff;
+}
+
+
+/* Delete */
+
+.content-section > div > div > div button:last-of-type {
+  border: 1px solid #d9e3dc;
+
+  background: #f8faf8;
+  color: #66756c;
+}
+
+.content-section > div > div > div button:last-of-type:hover {
+  background: #eef3ef;
+}
+
+
+/* =========================
+   RESPONSIVE CARDS
+========================= */
+
+@media (max-width: 900px) {
+  .content-section > div > div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .content-section > div > div {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-state {
+  padding: 50px 20px;
+
+  background: #ffffff;
+  border: 1px dashed #cbdacf;
+  border-radius: 12px;
+
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.empty-state h3 {
+  margin: 0 0 8px;
+
+  font-size: 18px;
+  color: #2f633a;
+}
+
+.empty-state p {
+  margin: 0;
+
+  font-size: 14px;
+  color: #718078;
+}

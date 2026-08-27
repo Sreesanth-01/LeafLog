@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PlantCard from './PlantCard';
 
 const PlantList = ({plants,onEdit,onDelete}) => {
@@ -6,16 +6,25 @@ const PlantList = ({plants,onEdit,onDelete}) => {
   return (
     <div>
       <h2>Plant List</h2>
-      <div>
-          {plants.length>0 && plants.map((plant)=>(
+
+      {plants.length === 0 ? (
+        <div className="empty-state">
+          <div className="empty-icon">🌱</div>
+          <h3>No plants yet</h3>
+          <p>Add your first plant to start managing your collection.</p>
+        </div>
+      ) : (
+        <div className="plant-grid">
+          {plants.map((plant) => (
             <PlantCard
               key={plant.id}
               plant={plant}
               onEdit={onEdit}
-              onDelete={onDelete} 
+              onDelete={onDelete}
             />
           ))}
-      </div>
+        </div>
+      )}
     </div>
   )
 }
