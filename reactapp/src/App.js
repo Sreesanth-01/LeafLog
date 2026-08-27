@@ -57,7 +57,7 @@ const App = () => {
         <section className="welcome-section" id="dashboard">
           <div>
             <p className="welcome-label">PLANT CARE DASHBOARD</p>
-            <h1>Welcome to PlantCare 🌱</h1>
+            <h1>Plant Care Scheduler🌱</h1>
             <p className="welcome-text">Keep your plants healthy, happy, and beautifully maintained.</p>
           </div>
         </section>
