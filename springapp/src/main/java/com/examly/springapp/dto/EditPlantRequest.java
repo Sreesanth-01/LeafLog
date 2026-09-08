@@ -8,10 +8,10 @@ import lombok.Setter;
 @Getter 
 @Setter 
 public class EditPlantRequest {
-    public String plantName;
-    public int wateringFrequency;
-    public LocalDate lastWateredDate;
-    public int sunlightHours;
-    public int fertilizingFrequency;
-    public LocalDate lastFertilizedDate;
+    private String plantName;
+    private int wateringFrequency;
+    private LocalDate lastWateredDate;
+    private int sunlightHours;
+    private int fertilizingFrequency;
+    private LocalDate lastFertilizedDate;
 }

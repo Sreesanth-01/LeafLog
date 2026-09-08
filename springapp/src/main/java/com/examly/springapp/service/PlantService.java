@@ -23,8 +23,10 @@ public class PlantService {
         Plant plant = new Plant();
         plant.setPlantName(plantData.getPlantName());
         plant.setWateringFrequency(plantData.getWateringFrequency());
+        plant.setLastWateredDate(plantData.getLastWateredDate());
         plant.setSunlightHours(plantData.getSunlightHours());
         plant.setFertilizingFrequency(plantData.getFertilizingFrequency());
+        plant.setLastFertilizedDate(plantData.getLastFertilizedDate());git
 
         return plantRepo.save(plant);
     }

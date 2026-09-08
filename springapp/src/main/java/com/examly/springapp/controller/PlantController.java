@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.examly.springapp.dto.EditPlantRequest;
 import com.examly.springapp.dto.PlantRequest;
 import com.examly.springapp.model.Plant;
 import com.examly.springapp.service.PlantService;
@@ -44,8 +45,8 @@ public class PlantController {
     }
     
     @PutMapping("/plants/{id}")
-    public ResponseEntity<Plant> editPlant(@PathVariable long id){
-        Plant editedPlant = plantService.editPlant(id);
+    public ResponseEntity<Plant> editPlant(@PathVariable long id,@RequestBody EditPlantRequest editPlantRequest){
+        Plant editedPlant = plantService.editPlant(id, editPlantRequest);
         return  new ResponseEntity<>(editedPlant,HttpStatus.OK);
     }
 
