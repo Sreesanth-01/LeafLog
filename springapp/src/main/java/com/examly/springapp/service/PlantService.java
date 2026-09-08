@@ -36,6 +36,10 @@ public class PlantService {
         return plantRepo.findById(id);
     }
 
+    public Plant editPlant(long id){
+        Optional<Plant> plant = plantRepo.findById(null)
+    }
+
     public void deletePlant(long id){
         plantRepo.deleteById(id);
     }

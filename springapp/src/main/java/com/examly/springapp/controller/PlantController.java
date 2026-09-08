@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.examly.springapp.dto.PlantRequest;
 import com.examly.springapp.model.Plant;
-import com.examly.springapp.repository.PlantRepo;
 import com.examly.springapp.service.PlantService;
 
 @RestController
@@ -41,6 +41,12 @@ public class PlantController {
     @GetMapping("/plants/{id}")
     public ResponseEntity<Plant> getPlantById(@PathVariable long id){
         return new ResponseEntity<>(plantService.getPlantById(id).get(),HttpStatus.OK);
+    }
+    
+    @PutMapping("/plants/{id}")
+    public ResponseEntity<Plant> editPlant(@PathVariable long id){
+        Plant editedPlant = plantService.editPlant(id);
+        return  new ResponseEntity<>(editedPlant,HttpStatus.OK);
     }
 
     @DeleteMapping("/plants/{id}")
