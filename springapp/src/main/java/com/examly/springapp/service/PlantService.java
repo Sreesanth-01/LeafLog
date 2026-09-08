@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.examly.springapp.dto.EditPlantRequest;
 import com.examly.springapp.dto.PlantRequest;
 import com.examly.springapp.model.Plant;
 import com.examly.springapp.repository.PlantRepo;
@@ -36,8 +37,29 @@ public class PlantService {
         return plantRepo.findById(id);
     }
 
-    public Plant editPlant(long id){
-        Optional<Plant> plant = plantRepo.findById(null)
+    public Plant editPlant(long id, EditPlantRequest editPlantRequest){
+        Optional<Plant> foundPlant = plantRepo.findById(id);
+        Plant plant = foundPlant.get();
+        if(editPlantRequest.getPlantName()!=null){
+            plant.setPlantName(editPlantRequest.getPlantName());
+        }
+        if(editPlantRequest.getWateringFrequency()!=0){
+            plant.setWateringFrequency(editPlantRequest.getWateringFrequency());
+        }
+        if(editPlantRequest.getLastWateredDate()!=null){
+            plant.setLastWateredDate(editPlantRequest.getLastWateredDate());
+        }
+        if(editPlantRequest.getSunlightHours()!=0){
+            plant.setSunlightHours(editPlantRequest.getSunlightHours());
+        }
+        if(editPlantRequest.getFertilizingFrequency()!=0){
+            plant.setFertilizingFrequency(editPlantRequest.getFertilizingFrequency());
+        }
+        if(editPlantRequest.getLastFertilizedDate()!=null){
+            plant.setLastFertilizedDate(editPlantRequest.getLastFertilizedDate());
+        }
+
+        return plant;
     }
 
     public void deletePlant(long id){
