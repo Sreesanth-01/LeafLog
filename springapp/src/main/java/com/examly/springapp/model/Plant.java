@@ -1,5 +1,7 @@
 package com.examly.springapp.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,12 +23,15 @@ public class Plant {
         this.wateringFrequency = wateringFrequency;
         this.sunlightHours = sunlightHours;
         this.fertilizingFrequency = fertilizingFrequency;
+        
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String plantName;
     private int wateringFrequency;
+    private LocalDate lastWateredDate;
     private int sunlightHours;
     private int fertilizingFrequency;
+    private LocalDate lastFertilizedDate;
 }
