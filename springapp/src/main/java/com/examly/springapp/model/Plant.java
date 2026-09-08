@@ -18,11 +18,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Plant {
-    public Plant(String plantName, int wateringFrequency, int sunlightHours, int fertilizingFrequency) {
+    public Plant(String plantName, int wateringFrequency, LocalDate lastWaterDate,int sunlightHours, int fertilizingFrequency, LocalDate lastFertilizedDate) {
         this.plantName = plantName;
         this.wateringFrequency = wateringFrequency;
+        this.lastWateredDate = lastWaterDate;
         this.sunlightHours = sunlightHours;
         this.fertilizingFrequency = fertilizingFrequency;
+        this.lastFertilizedDate = lastFertilizedDate;
         
     }
     @Id
