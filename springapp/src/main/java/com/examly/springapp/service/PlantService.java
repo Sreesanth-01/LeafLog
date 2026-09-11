@@ -26,7 +26,7 @@ public class PlantService {
         plant.setLastWateredDate(plantData.getLastWateredDate());
         plant.setSunlightHours(plantData.getSunlightHours());
         plant.setFertilizingFrequency(plantData.getFertilizingFrequency());
-        plant.setLastFertilizedDate(plantData.getLastFertilizedDate());git
+        plant.setLastFertilizedDate(plantData.getLastFertilizedDate());
 
         return plantRepo.save(plant);
     }
