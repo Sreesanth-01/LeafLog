@@ -1,16 +1,21 @@
 package com.examly.springapp.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +33,10 @@ public class User implements UserDetails {
     private String name;
     private String email;
     private String password;
+
+    @JsonIgnore 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Plant> plants = new ArrayList<>();
     
     public User(String name, String email, String password) {
         this.name = name;
