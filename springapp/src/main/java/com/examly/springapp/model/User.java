@@ -30,7 +30,7 @@ public class User implements UserDetails {
     @Id 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int userId;
-    private String name;
+    private String userName;
     private String email;
     private String password;
 
@@ -38,8 +38,8 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Plant> plants = new ArrayList<>();
     
-    public User(String name, String email, String password) {
-        this.name = name;
+    public User(String userName, String email, String password) {
+        this.userName = userName;
         this.email = email;
         this.password = password;
     }
@@ -60,26 +60,22 @@ public class User implements UserDetails {
     }
      @Override
     public boolean isAccountNonExpired() {
-        // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        // TODO Auto-generated method stub
-        return false;
+        return true;
     }
     
 }

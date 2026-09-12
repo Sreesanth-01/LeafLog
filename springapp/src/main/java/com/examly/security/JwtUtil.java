@@ -5,6 +5,8 @@ import java.util.Date;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.examly.springapp.model.User;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -13,6 +15,19 @@ import io.jsonwebtoken.security.Keys;
 public class JwtUtil {
     private  final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     private final long expiration_time = 3600000*24;
+
+     private String buildToken(String email){
+        return Jwts.builder()
+                    .setSubject(email)
+                    .setIssuedAt(new Date())
+                    .setExpiration(new Date(System.currentTimeMillis()+expiration_time))
+                    .signWith(key)
+                    .compact();
+    }
+
+    public String generateToken(UserDetails userDetails){
+        return buildToken(userDetails.getUsername());
+    }
 
     private Claims extractAllClaims(String token){
         return Jwts.parserBuilder()
@@ -34,8 +49,8 @@ public class JwtUtil {
         return extractExpiration(token).before(new Date());
     }
 
-    public boolean isTokenValid(String token){
+    public boolean isTokenValid(String token, UserDetails userDetails){
         String username = extractUserName(token);
-        return (UserDetails.getusername().equals(username) && isTokenValid(token));
+        return username.equals(userDetails.getUsername()) && isTokenExpired(token);
     }
 }
