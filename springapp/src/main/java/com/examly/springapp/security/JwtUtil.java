@@ -1,4 +1,4 @@
-package com.examly.security;
+package com.examly.springapp.security;
 
 import java.security.Key;
 import java.util.Date;

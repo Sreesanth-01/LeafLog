@@ -1,4 +1,4 @@
-package com.examly.security;
+package com.examly.springapp.security;
 
 import java.io.IOException;
 import java.util.List;

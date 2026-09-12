@@ -1,4 +1,4 @@
-package com.examly.config;
+package com.examly.springapp.config;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.examly.security.JwtAuthenticationFilter;
+import com.examly.springapp.security.JwtAuthenticationFilter;
 
 import lombok.RequiredArgsConstructor;
 

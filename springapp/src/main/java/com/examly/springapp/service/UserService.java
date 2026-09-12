@@ -1,17 +1,15 @@
 package com.examly.springapp.service;
 
-import java.util.Optional;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.examly.security.JwtUtil;
 import com.examly.springapp.dto.LoginRequest;
 import com.examly.springapp.dto.LoginResponse;
 import com.examly.springapp.dto.SignUpRequest;
 import com.examly.springapp.dto.SignUpResponse;
 import com.examly.springapp.model.User;
 import com.examly.springapp.repository.UserRepo;
+import com.examly.springapp.security.JwtUtil;
 
 @Service 
 public class UserService {
