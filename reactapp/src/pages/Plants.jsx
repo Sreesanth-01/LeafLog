@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PlantList from "../components/PlantList";
-import { getPlants } from "../services/api";
+import { getPlants } from "../services/plantApi";
 import "../css/PlantCare.css";
 
 const Plants = () => {

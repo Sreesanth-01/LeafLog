@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getPlants } from "../services/api";
+import { getPlants } from "../services/plantApi";
 import "../css/PlantCare.css";
 
 const Dashboard = () => {

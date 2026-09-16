@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +16,6 @@ import com.examly.springapp.dto.SignUpRequest;
 import com.examly.springapp.dto.SignUpResponse;
 import com.examly.springapp.service.UserService;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController 
 @RequestMapping("/api/auth")
@@ -29,6 +29,9 @@ public class AuthController {
     @PostMapping("/signUp")
     public ResponseEntity<Object> signUp(@RequestBody SignUpRequest signUpRequest){
         try{
+             System.out.println("EMAIL = " + signUpRequest.getEmail());
+            System.out.println("USERNAME = " + signUpRequest.getUserName());
+            System.out.println("PASSWORD = " + signUpRequest.getPassword());
             SignUpResponse response = userService.register(signUpRequest);
             return ResponseEntity.ok(response.getMessage());
         }

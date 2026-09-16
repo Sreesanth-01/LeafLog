@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { registerUser } from '../api/authApi';
+import { registerUser } from '../services/authApi';
 import Input from '../components/Input';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,7 +10,6 @@ const Register = () => {
   const [form,setForm] = useState({
     userName:"",
     email:"",
-    mobile:"",
     password:""
   });
 
@@ -41,7 +40,6 @@ const Register = () => {
         <form onSubmit={handleSubmit}>
             <Input label="UserName" name="userName" value={form.userName} type="text" onChange={handleChange} placeholder="Enter Username"></Input>
             <Input label="Email" name="email" value={form.email} type="email" onChange={handleChange} placeholder="you@example.com"></Input>
-            <Input label="Mobile" name="mobile" value={form.mobile} type="text" onChange={handleChange} placeholder="Your mobile no."></Input>
             <Input label="Password" name="password" value={form.password} type="password" onChange={handleChange} placeholder="Enter Password"></Input>
             <button type='submit'>Register</button>
         </form>

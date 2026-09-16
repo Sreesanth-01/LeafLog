@@ -3,7 +3,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL:
-    "http://8080-cdcaaaabedafdacceedbadfcfbabfcdecfafccfe.premiumproject.examly.io",
+    "http://localhost:8080/api",
   headers: {
     "Content-Type": "application/json",
   },
@@ -11,7 +11,7 @@ const api = axios.create({
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
-
+    console.log("JWT being sent:", token);
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -20,11 +20,11 @@ api.interceptors.request.use((config) => {
 });
 
 export const addPlant = (data) => {
-  return api.post("/api/plants", data);
+  return api.post("/plants", data);
 };
 
 export const getPlants = () => {
-  return api.get("/api/plants");
+  return api.get("/plants");
 };
 
 export default api;

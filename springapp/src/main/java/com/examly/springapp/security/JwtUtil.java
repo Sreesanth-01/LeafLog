@@ -4,14 +4,15 @@ import java.security.Key;
 import java.util.Date;
 
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
-import com.examly.springapp.model.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
+@Component 
 public class JwtUtil {
     private  final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     private final long expiration_time = 3600000*24;
@@ -51,6 +52,6 @@ public class JwtUtil {
 
     public boolean isTokenValid(String token, UserDetails userDetails){
         String username = extractUserName(token);
-        return username.equals(userDetails.getUsername()) && isTokenExpired(token);
+        return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
 }

@@ -5,15 +5,18 @@ import Navbar from "./components/Navbar";
 import AppRoutes from "./routes/AppRoutes";
 
 import "./css/PlantCare.css";
+import { AuthProvider } from "./context/AuthContext";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="app">
-        <Navbar />
+      <AuthProvider>
+        <div className="app">
+          <Navbar />
 
-        <AppRoutes />
-      </div>
+          <AppRoutes />
+        </div>
+      </AuthProvider>
     </BrowserRouter>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { addPlant } from '../services/api';
+import { addPlant } from '../services/plantApi';
 
 const PlantForm = (selectedPlant) => {
   const [formData,setFormData] = useState({
@@ -15,7 +15,7 @@ const PlantForm = (selectedPlant) => {
   const handleSubmit = async(e) =>{
     e.preventDefault();
     try {
-      await onSubmit(formData);
+      const res = await addPlant(formData);
       console.log(res);
     } catch (error) {
       console.error(error);

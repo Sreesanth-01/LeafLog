@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import Input from '../components/Input'
-import { loginApi } from '../api/authApi';
+import { loginApi } from '../services/authApi';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 

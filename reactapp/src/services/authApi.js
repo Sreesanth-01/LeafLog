@@ -2,16 +2,16 @@ import axios from "axios";
 
 const authApi = axios.create({
   baseURL:
-    "http://8080-cdcaaaabedafdacceedbadfcfbabfcdecfafccfe.premiumproject.examly.io",
+    "http://localhost:8080/api/auth",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
 export const loginApi = (data) => {
-  return authApi.post("/api/auth/login", data);
+  return authApi.post("/login", data);
 };
 
 export const registerUser = (data) => {
-  return authApi.post("/api/auth/register", data);
+  return authApi.post("/signUp", data);
 };
