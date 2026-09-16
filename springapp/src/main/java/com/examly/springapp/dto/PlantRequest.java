@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 public class PlantRequest {
     private String plantName;
-    private int wateringFrequency;
+    private String wateringFrequency;
     private LocalDate lastWateredDate;
     private int sunlightHours;
-    private int fertilizingFrequency;
+    private String fertilizingFrequency;
     private LocalDate lastFertilizedDate;
 }

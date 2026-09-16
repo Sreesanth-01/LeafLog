@@ -25,7 +25,7 @@ public class PlantService {
 
     public Plant addPlant(PlantRequest plantData, String email){
 
-        User user = userRepo.findByEmail(null).orElseThrow(()-> new RuntimeException("User NOT found"));
+        User user = userRepo.findByEmail(email).orElseThrow(()-> new RuntimeException("User NOT found"));
 
         Plant plant = new Plant();
         plant.setPlantName(plantData.getPlantName());
@@ -56,7 +56,7 @@ public class PlantService {
         if(editPlantRequest.getPlantName()!=null){
             plant.setPlantName(editPlantRequest.getPlantName());
         }
-        if(editPlantRequest.getWateringFrequency()!=0){
+        if(editPlantRequest.getWateringFrequency()!=null){
             plant.setWateringFrequency(editPlantRequest.getWateringFrequency());
         }
         if(editPlantRequest.getLastWateredDate()!=null){
@@ -65,7 +65,7 @@ public class PlantService {
         if(editPlantRequest.getSunlightHours()!=0){
             plant.setSunlightHours(editPlantRequest.getSunlightHours());
         }
-        if(editPlantRequest.getFertilizingFrequency()!=0){
+        if(editPlantRequest.getFertilizingFrequency()!=null){
             plant.setFertilizingFrequency(editPlantRequest.getFertilizingFrequency());
         }
         if(editPlantRequest.getLastFertilizedDate()!=null){

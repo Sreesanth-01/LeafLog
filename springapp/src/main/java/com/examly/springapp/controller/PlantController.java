@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,40 +32,40 @@ public class PlantController {
     }
 
     @PostMapping("/plants")
-    public ResponseEntity<Plant> addPlant(@RequestBody PlantRequest plantData, @AuthenticationPrincipal  String email){
-        return new ResponseEntity<>(plantService.addPlant(plantData,email), HttpStatus.OK);
+    public ResponseEntity<Plant> addPlant(@RequestBody PlantRequest plantData, @AuthenticationPrincipal  UserDetails userDetails){
+        return new ResponseEntity<>(plantService.addPlant(plantData,userDetails.getUsername()), HttpStatus.OK);
     }
 
     @GetMapping("/plants")
-    public ResponseEntity<List<Plant>> getAllPlants(@AuthenticationPrincipal  String email){
-        return new ResponseEntity<>(plantService.getAllPlants(email),HttpStatus.OK);
+    public ResponseEntity<List<Plant>> getAllPlants(@AuthenticationPrincipal  UserDetails userDetails){
+        return new ResponseEntity<>(plantService.getAllPlants(userDetails.getUsername()),HttpStatus.OK);
     }
 
     @GetMapping("/plants/{id}")
-    public ResponseEntity<Plant> getPlantById(@PathVariable long id, @AuthenticationPrincipal String email){
-        return new ResponseEntity<>(plantService.getPlantById(id,email).get(),HttpStatus.OK);
+    public ResponseEntity<Plant> getPlantById(@PathVariable long id, @AuthenticationPrincipal UserDetails userDetails){
+        return new ResponseEntity<>(plantService.getPlantById(id,userDetails.getUsername()).get(),HttpStatus.OK);
     }
     
     @PutMapping("/plants/{id}")
-    public ResponseEntity<Plant> editPlant(@PathVariable long id,@RequestBody EditPlantRequest editPlantRequest, @AuthenticationPrincipal  String email){
-        Plant editedPlant = plantService.editPlant(id, editPlantRequest, email);
+    public ResponseEntity<Plant> editPlant(@PathVariable long id,@RequestBody EditPlantRequest editPlantRequest, @AuthenticationPrincipal  UserDetails userDetails){
+        Plant editedPlant = plantService.editPlant(id, editPlantRequest, userDetails.getUsername());
         return  new ResponseEntity<>(editedPlant,HttpStatus.OK);
     }
 
     @DeleteMapping("/plants/{id}")
-    public ResponseEntity<String> deletePlant(@PathVariable long id,  @AuthenticationPrincipal  String email){
-        Optional<Plant> plant = plantService.getPlantById(id,email);
+    public ResponseEntity<String> deletePlant(@PathVariable long id,  @AuthenticationPrincipal  UserDetails userDetails){
+        Optional<Plant> plant = plantService.getPlantById(id,userDetails.getUsername());
         if(plant.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        plantService.deletePlant(id,email);
+        plantService.deletePlant(id,userDetails.getUsername());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/plants/plan")
-    public ResponseEntity<List<Plant>> generateCarePlan(@RequestParam(required = false) String method,  @AuthenticationPrincipal  String email){
+    public ResponseEntity<List<Plant>> generateCarePlan(@RequestParam(required = false) String method,  @AuthenticationPrincipal  UserDetails userDetails){
         
-        List<Plant> carePlan = plantService.generateCarePlan(method,email);
+        List<Plant> carePlan = plantService.generateCarePlan(method,userDetails.getUsername());
         if(carePlan == null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

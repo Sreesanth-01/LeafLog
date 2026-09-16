@@ -16,12 +16,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
+@Getter 
+@Setter 
 @AllArgsConstructor
 @NoArgsConstructor
 public class Plant {
-    public Plant(String plantName, int wateringFrequency, LocalDate lastWaterDate,int sunlightHours, int fertilizingFrequency, LocalDate lastFertilizedDate) {
+    public Plant(String plantName, String wateringFrequency, LocalDate lastWaterDate,int sunlightHours, String fertilizingFrequency, LocalDate lastFertilizedDate) {
         this.plantName = plantName;
         this.wateringFrequency = wateringFrequency;
         this.lastWateredDate = lastWaterDate;
@@ -34,10 +34,10 @@ public class Plant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String plantName;
-    private int wateringFrequency;
+    private String wateringFrequency;
     private LocalDate lastWateredDate;
     private int sunlightHours;
-    private int fertilizingFrequency;
+    private String fertilizingFrequency;
     private LocalDate lastFertilizedDate;
 
     @ManyToOne (fetch = FetchType.LAZY)
