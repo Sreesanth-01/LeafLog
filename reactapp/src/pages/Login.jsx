@@ -38,15 +38,15 @@ const Login = () => {
 
 
   return (
-    <div className='min-h-screen items-center justify-center px-6 flex flex-col'>
+    <div>
       <div>
-        <h1 className='text-4xl font-semibold text-center mb-6 mt-6'>Login</h1>
+        <h1>Login</h1>
       </div>
-      <div className='w-full max-w-md  rounded-md shadow-sm'>
-        <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+      <div>
+        <form onSubmit={handleSubmit}>
           <Input name="email" value={form.email} label="Email:" onChange={handleChange} placeholder="Enter email" type='email'></Input>
           <Input name="password" value={form.password} label="Password:" onChange={handleChange} placeholder="******" type='password'></Input>
-          <button type='submit' className='w-full bg-black text-white py-2 px-4 rounded-md font-medium hover:font-bold transition duration-500 cursor-pointer'>Login</button>
+          <button type='submit'>Login</button>
         </form>
       </div>
     </div>
