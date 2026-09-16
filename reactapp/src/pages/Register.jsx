@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { registerUser } from '../api/authApi';
 import Input from '../components/Input';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+
+    const navigate = useNavigate();
 
   const [form,setForm] = useState({
     userName:"",
@@ -20,6 +23,7 @@ const Register = () => {
 
     try{
       const response = await registerUser(form);
+      navigate("/login");
       console.log("Registration successfull");
     }
     catch(error){
