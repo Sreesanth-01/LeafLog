@@ -4,7 +4,7 @@ import PlantCard from './PlantCard';
 const PlantList = ({plants,onEdit,onDelete}) => {
 
   return (
-    <div>
+    <main className='main-content'>
       <h2>Plant List</h2>
 
       {plants.length === 0 ? (
@@ -25,7 +25,7 @@ const PlantList = ({plants,onEdit,onDelete}) => {
           ))}
         </div>
       )}
-    </div>
+    </main>
   )
 }
 

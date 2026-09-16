@@ -32,7 +32,7 @@ const Register = () => {
   }
 
   return (
-    <div>
+    <main className='main-content'>
       <div>
         <h1>Register</h1>
       </div>
@@ -44,7 +44,7 @@ const Register = () => {
             <button type='submit'>Register</button>
         </form>
       </div>
-    </div>
+    </main>
   )
 }
 

@@ -38,7 +38,7 @@ const Login = () => {
 
 
   return (
-    <div>
+    <main className='main-content'>
       <div>
         <h1>Login</h1>
       </div>
@@ -49,7 +49,7 @@ const Login = () => {
           <button type='submit'>Login</button>
         </form>
       </div>
-    </div>
+    </main>
   )
 }
 

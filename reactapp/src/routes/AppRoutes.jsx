@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Plants from "../pages/Plants";
 import AddPlant from "../pages/AddPlant";
+import EditPlant from "../pages/EditPlant";
 
 const AppRoutes = () => {
   return (

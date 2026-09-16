@@ -28,7 +28,7 @@ const PlantForm = ({selectedPlant,onSubmit}) => {
 
   return (
       <form onSubmit={handleSubmit}>
-        <input type='text' name='plantName' value={formData.name} placeholder='Plant Name' onChange={handleChange}></input>
+        <input type='text' name='plantName' value={formData.plantName} placeholder='Plant Name' onChange={handleChange}></input>
         <input type='number' name='sunlightHours' value={formData.sunlightHours} onChange={handleChange}></input>
         <input type='text' name='wateringFrequency' value={formData.wateringFrequency} placeholder='Watering Frequency' onChange={handleChange}></input>
         <input type='date' name='lastWateredDate' value={formData.lastWateredDate} onChange={handleChange}></input>
