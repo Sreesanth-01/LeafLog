@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { addPlant } from '../services/api';
 
-const PlantForm = ({onSubmit, selectedPlant}) => {
+const PlantForm = (selectedPlant) => {
   const [formData,setFormData] = useState({
     name:selectedPlant ? selectedPlant.name : "",
     wateringFrequency:selectedPlant ? selectedPlant.wateringFrequency : "",
