@@ -1,6 +1,6 @@
 import React from "react";
 import PlantForm from "../components/PlantForm";
-import { addPlant } from "../services/api";
+import { addPlant } from "../services/plantApi";
 import { useNavigate } from "react-router-dom";
 import "../css/PlantCare.css";
 

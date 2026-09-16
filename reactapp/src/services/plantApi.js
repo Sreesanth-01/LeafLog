@@ -1,4 +1,4 @@
-import { apiClient } from "./api";
+
 import axios from "axios";
 
 const api = axios.create({
@@ -25,6 +25,14 @@ export const addPlant = (data) => {
 
 export const getPlants = () => {
   return api.get("/plants");
+};
+
+export const updatePlant = (id, data) => {
+  api.put(`/plants/${id}`, data);
+};
+
+export const deletePlant = (id) => {
+  api.delete(`/plants/${id}`);
 };
 
 export default api;

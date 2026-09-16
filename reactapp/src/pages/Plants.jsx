@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PlantList from "../components/PlantList";
-import { getPlants } from "../services/plantApi";
+import { getPlants, deletePlant } from "../services/plantApi";
 import "../css/PlantCare.css";
 
 const Plants = () => {
   const [plantList, setPlantList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchPlants();
@@ -20,11 +22,20 @@ const Plants = () => {
   };
 
   const handleEdit = (plant) => {
-    console.log("Edit plant:", plant);
+    navigate(`/edit-plant/${plant.id}`, { state: { plant } });
   };
 
-  const handleDelete = (plant) => {
-    console.log("Delete plant:", plant);
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm("Delete this plant?");
+    if (!confirmDelete) return;
+
+    try {
+      await deletePlant(id);
+      setPlantList((prev) => prev.filter((p) => p.id !== id));
+    } catch (error) {
+      console.error("Error deleting plant:", error);
+      alert("Failed to delete plant");
+    }
   };
 
   return (

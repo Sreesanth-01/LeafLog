@@ -19,6 +19,8 @@ const AppRoutes = () => {
       <Route path="/plants" element={<Plants />} />
 
       <Route path="/add-plant" element={<AddPlant />} />
+
+      <Route path="/edit-plant/:id" element={<EditPlant />} />
     </Routes>
   );
 };
