@@ -26,6 +26,7 @@ const Navbar = () => {
           <>
             <Link to="/plants">My Plants</Link>
             <Link to="/add-plant">Add Plant</Link>
+            <Link to="/care-plan">Care Plan</Link>
             <button onClick={handleLogout}>Logout</button>
           </>
         )}

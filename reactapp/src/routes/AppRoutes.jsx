@@ -7,6 +7,7 @@ import Register from "../pages/Register";
 import Plants from "../pages/Plants";
 import AddPlant from "../pages/AddPlant";
 import EditPlant from "../pages/EditPlant";
+import CarePlan from "../pages/CarePlan";
 
 const AppRoutes = () => {
   return (
@@ -22,6 +23,8 @@ const AppRoutes = () => {
       <Route path="/add-plant" element={<AddPlant />} />
 
       <Route path="/edit-plant/:id" element={<EditPlant />} />
+
+      <Route path="/care-plan" element={<CarePlan />} />
     </Routes>
   );
 };

@@ -33,9 +33,7 @@ const Register = () => {
 
   return (
     <main className='main-content'>
-      <div>
         <h1>Register</h1>
-      </div>
       <div>
         <form onSubmit={handleSubmit}>
             <Input label="UserName" name="userName" value={form.userName} type="text" onChange={handleChange} placeholder="Enter Username"></Input>

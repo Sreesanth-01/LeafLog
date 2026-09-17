@@ -18,10 +18,6 @@ const Dashboard = () => {
     }
   };
 
-  /* =========================
-     FREQUENCY
-  ========================= */
-
   const getFrequencyDays = (frequency) => {
     if (!frequency) return null;
 
@@ -70,9 +66,6 @@ const Dashboard = () => {
     return null;
   };
 
-  /* =========================
-     DATE HELPERS
-  ========================= */
 
   const getToday = () => {
     const today = new Date();
@@ -153,9 +146,6 @@ const Dashboard = () => {
     );
   };
 
-  /* =========================
-     TODAY'S TASKS
-  ========================= */
 
   const wateringPlants = plantList.filter((plant) =>
     isDueToday(
@@ -171,13 +161,6 @@ const Dashboard = () => {
     )
   );
 
-  /*
-    Keep watering and fertilizing as
-    separate tasks.
-
-    So if one plant needs both,
-    it will correctly show TWO tasks.
-  */
 
   const careToday = [
     ...wateringPlants.map((plant) => ({
@@ -195,9 +178,6 @@ const Dashboard = () => {
     })),
   ];
 
-  /* =========================
-     UPCOMING CARE
-  ========================= */
 
   const upcomingPlants = plantList
     .map((plant) => {
@@ -236,10 +216,6 @@ const Dashboard = () => {
   return (
     <main className="main-content">
 
-      {/* =========================
-          WELCOME
-      ========================= */}
-
       <section className="welcome-section">
         <div>
           <p className="welcome-label">
@@ -257,10 +233,6 @@ const Dashboard = () => {
           </p>
         </div>
       </section>
-
-      {/* =========================
-          STATISTICS
-      ========================= */}
 
       <section className="stats-grid">
 
@@ -338,9 +310,6 @@ const Dashboard = () => {
 
       </section>
 
-      {/* =========================
-          TODAY'S CARE
-      ========================= */}
 
       <section className="dashboard-section">
 

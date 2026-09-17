@@ -35,4 +35,8 @@ export const deletePlant = (id) => {
   api.delete(`/plants/${id}`);
 };
 
+export const getCarePlan = (method) => {
+  return api.get(`/plants/plan?method=${method}`);
+};
+
 export default api;
