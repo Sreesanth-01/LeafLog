@@ -22,6 +22,14 @@ import com.examly.springapp.dto.PlantRequest;
 import com.examly.springapp.model.Plant;
 import com.examly.springapp.service.PlantService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+
+@Tag(
+    name = "Plant Management",
+    description = "APIs for managing plants and generating care plans"
+)
 @RestController
 @RequestMapping("/api")
 public class PlantController {
@@ -31,27 +39,47 @@ public class PlantController {
         this.plantService = plantService;
     }
 
+     @Operation(
+        summary = "Add a plant",
+        description = "Creates a new plant for the authenticated user"
+    )
     @PostMapping("/plants")
     public ResponseEntity<Plant> addPlant(@RequestBody PlantRequest plantData, @AuthenticationPrincipal  UserDetails userDetails){
         return new ResponseEntity<>(plantService.addPlant(plantData,userDetails.getUsername()), HttpStatus.OK);
     }
 
+     @Operation(
+        summary = "Get all plants",
+        description = "Returns all plants belonging to the authenticated user"
+    )
     @GetMapping("/plants")
     public ResponseEntity<List<Plant>> getAllPlants(@AuthenticationPrincipal  UserDetails userDetails){
         return new ResponseEntity<>(plantService.getAllPlants(userDetails.getUsername()),HttpStatus.OK);
     }
 
+     @Operation(
+        summary = "Get plant by ID",
+        description = "Returns a specific plant belonging to the authenticated user"
+    )
     @GetMapping("/plants/{id}")
     public ResponseEntity<Plant> getPlantById(@PathVariable long id, @AuthenticationPrincipal UserDetails userDetails){
         return new ResponseEntity<>(plantService.getPlantById(id,userDetails.getUsername()).get(),HttpStatus.OK);
     }
     
+     @Operation(
+        summary = "Edit a plant",
+        description = "Updates an existing plant belonging to the user"
+    )
     @PutMapping("/plants/{id}")
     public ResponseEntity<Plant> editPlant(@PathVariable long id,@RequestBody EditPlantRequest editPlantRequest, @AuthenticationPrincipal  UserDetails userDetails){
         Plant editedPlant = plantService.editPlant(id, editPlantRequest, userDetails.getUsername());
         return  new ResponseEntity<>(editedPlant,HttpStatus.OK);
     }
 
+     @Operation(
+        summary = "Delete a plant",
+        description = "Deletes a plant belonging to the user"
+    )
     @DeleteMapping("/plants/{id}")
     public ResponseEntity<String> deletePlant(@PathVariable long id,  @AuthenticationPrincipal  UserDetails userDetails){
         Optional<Plant> plant = plantService.getPlantById(id,userDetails.getUsername());
@@ -62,6 +90,10 @@ public class PlantController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @Operation(
+        summary = "Generate care plan",
+        description = "Generates a care plan based on the selected method: water or sunlight"
+    )
     @GetMapping("/plants/plan")
     public ResponseEntity<List<Plant>> generateCarePlan(@RequestParam(required = false) String method,  @AuthenticationPrincipal  UserDetails userDetails){
         
